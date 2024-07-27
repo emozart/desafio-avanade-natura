@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserRepoListResponseDto } from './dto/user-repo-list-response.dto';
 import { UserDataResponseDto } from './dto/user-data-response.dto';
 
@@ -8,7 +8,8 @@ export class UserService {
     const response = await fetch(`https://api.github.com/users/${username}`);
     const data = await response.json();
 
-    if (response.status !== 200) return data;
+    if (response.status !== 200)
+      throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
 
     const userdata: UserDataResponseDto = {
       name: data.name,
@@ -28,7 +29,8 @@ export class UserService {
     );
     const data = await response.json();
 
-    if (response.status !== 200) return data;
+    if (response.status !== 200)
+      throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
 
     return this.generateRepoList(data);
   }
