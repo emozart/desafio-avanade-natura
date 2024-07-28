@@ -2,7 +2,8 @@
 
 Esta é uma API desenvolvida para processo seletivo da Avanade para uma vaga no cliente Natura.
 Você pode acessar a documentação e testar a api acessando o link abaixo:
-[http://ec2-54-84-123-173.compute-1.amazonaws.com/docs](http://http://ec2-54-84-123-173.compute-1.amazonaws.com/docs)
+
+[http://ec2-54-84-123-173.compute-1.amazonaws.com/docs](http://ec2-54-84-123-173.compute-1.amazonaws.com/docs)
 
 ## Clone repo
 Caso queira executar o projeto de forma local execute o clone do projeto com o comando abaixo e siga as instruções seguintes.
