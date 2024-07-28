@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { UserDataResponseDto } from './dto/user-data-response.dto';
 import { UserRepoListResponseDto } from './dto/user-repo-list-response.dto';
+import { HttpException, HttpStatus } from '@nestjs/common';
 
 describe('UserService', () => {
   let service: UserService;
@@ -57,12 +58,9 @@ describe('UserService', () => {
       };
       global.fetch = jest.fn().mockResolvedValue(response as any);
 
-      const result = await service.getUserData(username);
-
-      expect(result).toEqual({
-        message: 'Not Found',
-        status: 404,
-      });
+      await expect(service.getUserData(username)).rejects.toThrow(
+        new HttpException('Not Found', HttpStatus.NOT_FOUND),
+      );
     });
   });
 
@@ -104,12 +102,9 @@ describe('UserService', () => {
       };
       global.fetch = jest.fn().mockResolvedValue(response as any);
 
-      const result = await service.getUserRepoList(username);
-
-      expect(result).toEqual({
-        message: 'Not Found',
-        status: 404,
-      });
+      await expect(service.getUserRepoList(username)).rejects.toThrow(
+        new HttpException('Not Found', HttpStatus.NOT_FOUND),
+      );
     });
   });
 });
