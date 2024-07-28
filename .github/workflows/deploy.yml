@@ -31,4 +31,4 @@ jobs:
         run: docker rm -f desafio-avanade-natura
 
       - name: Run Docker Container
-        run: docker run -d -p 3000:3000 --name desafio-avanade-natura emozart/desafio-avanade-natura:v1 sh -c npm run start
+        run: docker run -d -p 3000:3000 --name desafio-avanade-natura emozart/desafio-avanade-natura:v1 sh -c "npm run start"
